@@ -9,7 +9,6 @@ class Counter extends Component {
             {
                 count: 0
             }
-
             this.increment = this.increment.bind(this);
             this.decrement = this.decrement.bind(this);
             this.reset = this.reset.bind(this);
@@ -30,6 +29,7 @@ class Counter extends Component {
     increment(by) {
         this.setState(
             () => {
+                //console.log(by);
                 return {count: this.state.count + by}
             }
         );
