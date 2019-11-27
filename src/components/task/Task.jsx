@@ -113,6 +113,7 @@ class Task extends Component {
                     numberErrors: 0,
                     numberСorrect: 0,
                     result: "",
+
                     minValue: this.state.minValue,
                     maxValue:this.state.maxValue
                 }
