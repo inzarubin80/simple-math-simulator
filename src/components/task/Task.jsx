@@ -73,7 +73,7 @@ class Task extends Component {
 
     render() {
         return (
-            <div>
+            <div class="wa box_div">
 
                 <h1><span
                     className="badge badge-secondary">{"" + this.state.number1 + " + " + this.state.number2 + " = " + this.state.result}</span>
@@ -235,11 +235,12 @@ class TaskButton extends Component {
 
 function NumberList(props) {
 
+
     const listItems = props.story.map((number) =>
-        <li>{number.task + " - it is " + number.itsTrue}</li>
+        <li className = {number.itsTrue ? "correctly" : "wrongly"} >{number.task}</li>
     );
     return (
-        <ul>{listItems}</ul>
+        <ul className="box_block">{listItems}</ul>
     );
 }
 

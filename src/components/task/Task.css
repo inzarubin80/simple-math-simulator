@@ -7,7 +7,6 @@
     flex: 1 0 auto;
     padding: 10px;
     width: 50px;
-
     background-color: #f5923e;
     color: white;
 
@@ -27,6 +26,17 @@
 
 }
 
+.correctly{
+
+    color: green;
+}
+
+
+.wrongly{
+
+    color: red;
+}
+
 
 .component-button-panel {
     /*background-color: #858694;*/
@@ -35,9 +45,6 @@
     flex-wrap: wrap;
     flex: 1 0 auto;
     text-align: center;
-
-
-
 }
 
 .component-button-panel > div {
@@ -52,5 +59,41 @@
     justify-content: center
 
 }
+
+ul {
+    counter-reset: index;
+    padding: 0;
+    max-width: 300px;
+
+}
+
+li {
+    counter-increment: index;
+    display: flex;
+    align-items: center;
+    padding: 1px 0;
+    box-sizing: border-box;
+}
+
+li::before {
+    content: counters(index, ".", decimal-leading-zero);
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+    min-width: 50px;
+    padding-right: 12px;
+    font-variant-numeric: tabular-nums;
+    align-self: flex-start;
+
+}
+
+
+/* Element separation */
+/*li + li {
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+*/
+
+
 
 
