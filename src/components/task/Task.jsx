@@ -3,7 +3,6 @@ import './Task.css'
 import './Bootstrap.css'
 
 
-
 class Task extends Component {
 
     constructor() {
@@ -20,15 +19,15 @@ class Task extends Component {
             result: "",
             numberErrors: 0,
             numberСorrect: 0,
-            minValue:1,
-            maxValue:100,
-            story:[]
+            minValue: 1,
+            maxValue: 100,
+            story: []
         };
     }
 
     handleChangeMin(e) {
 
-        let  min = Number(e.target.value);
+        let min = Number(e.target.value);
 
 
         this.setState(() => {
@@ -40,8 +39,8 @@ class Task extends Component {
                     numberСorrect: 0,
                     result: "",
                     minValue: min,
-                    maxValue:this.state.maxValue,
-                    story:[]
+                    maxValue: this.state.maxValue,
+                    story: []
                 }
             }
 
@@ -50,7 +49,7 @@ class Task extends Component {
 
     handleChangeMax(e) {
 
-        let  max = Number(e.target.value);
+        let max = Number(e.target.value);
 
 
         this.setState(() => {
@@ -63,8 +62,8 @@ class Task extends Component {
                     numberСorrect: 0,
                     result: "",
                     minValue: this.state.minValue,
-                    maxValue:max,
-                    story:[]
+                    maxValue: max,
+                    story: []
 
                 }
             }
@@ -74,41 +73,68 @@ class Task extends Component {
 
     render() {
         return (
-            <form>
+            <div>
 
-                <span className="badge badge-secondary">{"Количество решенных:" + this.state.numberСorrect}</span>
-                <span className="badge badge-secondary">{"Количество ошибок:" + this.state.numberErrors}</span>
+                <h1><span
+                    className="badge badge-secondary">{"" + this.state.number1 + " + " + this.state.number2 + " = " + this.state.result}</span>
+                </h1>
 
-                Min: <input className="form-control" type="number"  className="form-control"    min={1} value={this.state.minValue} onChange={this.handleChangeMin} />
-                Max: <input className="form-control" type="number"  className="form-control"    min={1} value={this.state.maxValue} onChange={this.handleChangeMax}/>
+                <div className="component-button-panel">
 
-                <TaskButton by={1} className="btn btn-outline-primary" incrementMethod={this.increment}/>
-                <TaskButton by={2} className="btn btn-outline-primary" incrementMethod={this.increment}/>
-                <TaskButton by={3} className="btn btn-outline-primary" incrementMethod={this.increment}/>
+                    <div>
+                        <TaskButton by={7} incrementMethod={this.increment}/>
+                        <TaskButton by={8} incrementMethod={this.increment}/>
+                        <TaskButton by={9} incrementMethod={this.increment}/>
+                    </div>
 
-                <TaskButton by={4} className="btn btn-outline-primary" incrementMethod={this.increment}/>
-                <TaskButton by={5} className="btn btn-outline-primary" incrementMethod={this.increment}/>
-                <TaskButton by={6} className="btn btn-outline-primary" incrementMethod={this.increment}/>
+                    <div>
+                        <TaskButton by={4} incrementMethod={this.increment}/>
+                        <TaskButton by={5} incrementMethod={this.increment}/>
+                        <TaskButton by={6} incrementMethod={this.increment}/>
+                    </div>
 
-                <TaskButton by={7} className="btn btn-outline-primary" incrementMethod={this.increment}/>
-                <TaskButton by={8} className="btn btn-outline-primary" incrementMethod={this.increment}/>
-                <TaskButton by={9} className="btn btn-outline-primary" incrementMethod={this.increment}/>
+                    <div>
+                        <TaskButton by={1} incrementMethod={this.increment}/>
+                        <TaskButton by={2} incrementMethod={this.increment}/>
+                        <TaskButton by={3} incrementMethod={this.increment}/>
+                    </div>
 
-                <TaskButton by={0} className="btn btn-outline-primary" incrementMethod={this.increment}/>
 
+                    <div>
+                        <TaskButton by={0} className="btn btn-outline-primary" incrementMethod={this.increment}/>
+                    </div>
 
-                <span className="count">{"" + this.state.number1 + " + " + this.state.number2 + " = " + this.state.result}</span>
+                </div>
+
 
                 <div>
-                    <button className="reset" onClick={this.reset}>Reset</button>
+                    <button className="button-reset" onClick={this.reset}>Reset</button>
                 </div>
+
+                <div className="input-group mb-3">
+                    <div className="input-group-prepend">
+                        <span className="input-group-text">min:</span>
+                    </div>
+                    <input type="number" className="form-control" min={1} value={this.state.minValue}
+                           onChange={this.handleChangeMin} aria-describedby="basic-addon1"/>
+                </div>
+
+                <div className="input-group mb-3">
+                    <div className="input-group-prepend">
+                        <span className="input-group-text">max:</span>
+                    </div>
+                    <input type="number" className="form-control" min={1} value={this.state.maxValue}
+                           onChange={this.handleChangeMax} aria-describedby="basic-addon1"/>
+                </div>
+
+                <h4>Количество ошибок: <span className="badge badge-secondary">{this.state.numberErrors}</span></h4>
+                <h4>Количество решенных: <span className="badge badge-secondary">{this.state.numberСorrect}</span></h4>
 
                 <NumberList story={this.state.story}/>
 
-            </form>
+            </div>
         )
     }
-
 
 
     increment(by) {
@@ -125,14 +151,20 @@ class Task extends Component {
 
                 if (newResult != String(this.state.number1 + this.state.number2).substr(0, newResult.length)) {
 
-                    story =  [...this.state.story, {task:"" + this.state.number1 + " + " + this.state.number2 + " = " + newResult, itsTrue:false}];
+                    story = [...this.state.story, {
+                        task: "" + this.state.number1 + " + " + this.state.number2 + " = " + newResult,
+                        itsTrue: false
+                    }];
                     newNumberErrors = this.state.numberErrors + 1;
                     newResult = "";
 
                 }
                 else if (newResult == String(this.state.number1 + this.state.number2)) {
 
-                    story =  [...this.state.story, {task:"" + this.state.number1 + " + " + this.state.number2 + " = "  + newResult, itsTrue:true}];
+                    story = [...this.state.story, {
+                        task: "" + this.state.number1 + " + " + this.state.number2 + " = " + newResult,
+                        itsTrue: true
+                    }];
                     newNumber1 = this.getRandom(this.state.minValue, this.state.maxValue);
                     newNumber2 = this.getRandom(this.state.minValue, this.state.maxValue);
                     newNumberСorrect = this.state.numberСorrect + 1;
@@ -141,7 +173,7 @@ class Task extends Component {
                 }
                 else {
 
-                    story =  [...this.state.story];
+                    story = [...this.state.story];
                 }
                 return {
                     number1: newNumber1,
@@ -166,7 +198,7 @@ class Task extends Component {
                     numberСorrect: 0,
                     result: "",
                     minValue: this.state.minValue,
-                    maxValue:this.state.maxValue,
+                    maxValue: this.state.maxValue,
                     story: []
                 }
             }
@@ -192,8 +224,9 @@ class TaskButton extends Component {
 
     render() {
         return (
-            <div className="counter">
-                <button onClick={() => this.props.incrementMethod(this.props.by)}>{this.props.by}</button>
+            <div>
+                <button className="button"
+                        onClick={() => this.props.incrementMethod(this.props.by)}>{this.props.by}</button>
             </div>
         )
     }
