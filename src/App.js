@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
-import Task from './components/task/Task';
+//import './Bootstrap_.css'
+import Game from './components/Game';
+
 
 function App() {
   return (
     <div className="App">
-        <Task/>
+        <Game/>
     </div>
   );
 }
