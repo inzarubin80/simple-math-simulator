@@ -1,17 +1,13 @@
-import React, {Component} from 'react'
+import React from 'react'
 
-class GameButton extends Component {
-    constructor() {
-        super();
-    }
-    render() {
-        return (
+const GameButton = ({by, incrementMethod}) => {
+
+    return (
             <div>
                 <button className="button"
-                        onClick={() => this.props.incrementMethod(this.props.by)}>{this.props.by}</button>
+                        onClick={()=>incrementMethod(by)}>{by}</button>
             </div>
         )
-    }
 }
 
 export default  GameButton;

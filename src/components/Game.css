@@ -1,35 +1,25 @@
 .button {
 
-    background-color: #e0e0e0;
     border: 0;
     font-size: 1.5rem;
-    margin: 0 1px 0 0;
-    flex: 20 auto;
-    padding: 10px;
+    margin: 0 3px 0 0;
 
-    background-color: #f5923e;
+    flex: 20 auto;
+    /*padding: 10px;*/
+
+    background-color: #C0C0C0;
     color: white;
-    border-radius: 12px;
 
     width: 100px;
 
 
 }
 
-.button-reset {
-
-    background-color: red;
-    border: 0;
-    font-size: 15px;
-    margin: 0 1px 0 0;
-    padding: 15px;
-    width: 90px;
-    color: white;
-    margin-top:20px;
-
+.card-body{
+    margin-left: auto;
+    margin-right: auto;
 
 }
-
 
 .component-button-panel {
 
@@ -42,16 +32,18 @@
 
 .component-button-panel > div {
 
+
     width: 100%;
 
     margin-bottom: 1px;
+
     flex: 1 0 auto;
 
     display: flex;
     align-items: center;
-    justify-content: center
-
+    justify-content: center;
 }
+
 
 ul {
     counter-reset: index;
