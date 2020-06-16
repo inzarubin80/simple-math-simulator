@@ -1,8 +1,7 @@
 import React from 'react'
 import {connect} from "react-redux"
-import Expression from "./Expression"
-import Loader from "./Loader"
-import Card from 'react-bootstrap/Card'
+
+
 
 const MathExpressionIndicator = ({numberExercises, mathematicalExpressions}) => {
     return (
@@ -10,20 +9,26 @@ const MathExpressionIndicator = ({numberExercises, mathematicalExpressions}) => 
 
             <h3>Придумываем примеры</h3>
 
-            <Loader/>
+            <div className="spinner-border text-dark" role="status">
+                <span className="sr-only">Loading...</span>
+            </div>
 
-            <Card style={{"width": 400, "marginLeft": "auto", "marginRight": "auto"}}>
-
-                {mathematicalExpressions.map((expressions, key) =>
-                    (<Expression
-                        number1={expressions.number1}
-                        number2={expressions.number2}
-                        operator={expressions.operator}
-                        big={false}
-                        key={key}
-                        result="?"/>))}
-
-            </Card>
+            <table className="table" style={{"width": 400,  "marginLeft": "auto", "marginRight": "auto", "marginTop": 20}}>
+                <thead>
+                <tr>
+                    <th scope="col">№</th>
+                    <th scope="col">Пример</th>
+                </tr>
+                </thead>
+                <tbody>
+                {mathematicalExpressions.map((expressions, key) => (
+                    <tr key={expressions.id}>
+                        <th scope="row">{expressions.id}</th>
+                        <td>{expressions.number1 + " " + expressions.operator + " " + expressions.number2} </td>
+                    </tr>
+                ))}
+                </tbody>
+            </table>
 
         </div>
     )

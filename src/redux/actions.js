@@ -23,6 +23,7 @@ import {сreateMathExpression} from '../service/mathGenerator'
 
 export const onStart = () => {
 
+    return {type: ON_START}
 }
 
 export const setCurrentAnswer = (currentAnswer) =>{

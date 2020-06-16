@@ -1,18 +1,18 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import Card from "react-bootstrap/Card";
+import {onStart} from "../redux/actions";
 
 
-const GameOverScreen = ({numberExercises, mathematicalExpressions}) => {
+const GameOverScreen = ({numberExercises, mathematicalExpressions, onStart}) => {
 
     let numberCorrectAnswers = 0;
     let numberMistakes = 0;
     let rating = 0;
 
 
-
-    mathematicalExpressions.map((item)=>{
-        if (item.answer===item.userAnswer) {
+    mathematicalExpressions.map((item) => {
+        if (item.answer === item.userAnswer) {
             numberCorrectAnswers++
         }
         else {
@@ -20,38 +20,66 @@ const GameOverScreen = ({numberExercises, mathematicalExpressions}) => {
         }
     })
 
-    let p = numberCorrectAnswers/numberExercises;
+    let p = numberCorrectAnswers / numberExercises;
 
-    if (p===1) {
+    if (p === 1) {
         rating = 5;
     }
-    else if (p>=0.8) {
+    else if (p >= 0.8) {
         rating = 4;
     }
-    else if (p>=0.6) {
+    else if (p >= 0.6) {
         rating = 3;
     }
     else {
         rating = 2;
     }
 
-    return (<Card style={{"width": 400, "marginLeft": "auto", "marginRight": "auto"}}>
+    return (
 
-        <div className="card-body">
+        <div style={{}}>
 
-            <h5 className="card-title">Поздравляю!!!</h5>
-            <h5 className="card-title">Вы прошли испытание!!!</h5>
+            <Card style={{"width": 400, "marginLeft": "auto", "marginRight": "auto", "marginTop": 20}}>
 
-            <p align="left" className="card-text">Решено правильно:{numberCorrectAnswers} </p>
-            <p align="left" className="card-text">Количество ошибок: {numberMistakes} </p>
-            <p align="left" className="card-text">Ваша оценка: {rating} </p>
+                <div className="card-body">
 
-            <a href="#" className="btn btn-primary">Go somewhere</a>
+                    <h5 className="card-title">Поздравляю!!!</h5>
+                    <h5 className="card-title">Вы прошли испытание!!!</h5>
+
+                    <p align="left" className="card-text">Решено правильно: {numberCorrectAnswers} </p>
+                    <p align="left" className="card-text">Количество ошибок: {numberMistakes} </p>
+                    <p align="left" className="card-text">Ваша оценка: {rating} </p>
+
+                    <button onClick={onStart} className="btn btn-primary">Повторить</button>
+
+                </div>
+            </Card>
+
+
+            <table className="table" style={{"width": 400,  "marginLeft": "auto", "marginRight": "auto", "marginTop": 20}}>
+                <thead>
+                <tr>
+                    <th scope="col">№</th>
+                    <th scope="col">Пример</th>
+                    <th scope="col">Ответ</th>
+                    <th scope="col">Правильный ответ</th>
+                </tr>
+                </thead>
+                <tbody>
+                {mathematicalExpressions.map((expressions, key) => (
+                        <tr key={expressions.id} >
+                            <th scope="row">{expressions.id}</th>
+                            <td>{expressions.number1 + " " + expressions.operator + " " + expressions.number2} </td>
+                            <td>{expressions.userAnswer}</td>
+                            <td>{expressions.answer}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+
 
         </div>
-
-    </Card>)
-
+    )
 }
 
 const mapStateToProps = state => {
@@ -61,4 +89,8 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, null)(GameOverScreen);
+const mapDispatchToProps = {
+    onStart
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GameOverScreen);
