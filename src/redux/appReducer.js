@@ -59,7 +59,7 @@ export default (state = initialState, action) => {
         case HIDE_ALERT:
             return {...state, alert: []}
         case ON_START:
-            return {...state, start: true, game: false, finish: false, mathematicalExpressions: [], idCurrentExercise:0}
+            return {...state, start: true, game: false, finish: false, mathematicalExpressions: [], idCurrentExercise:1}
         case ON_GAME:
             return {...state, start: false, game: true, finish: false}
         case ON_FINISH:
