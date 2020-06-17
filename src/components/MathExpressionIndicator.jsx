@@ -1,17 +1,16 @@
 import React from 'react'
 import {connect} from "react-redux"
-
+import Spinner from 'react-bootstrap/Spinner'
 
 
 const MathExpressionIndicator = ({numberExercises, mathematicalExpressions}) => {
     return (
         <div>
 
+
             <h3>Придумываем примеры</h3>
 
-            <div className="spinner-border text-dark" role="status">
-                <span className="sr-only">Loading...</span>
-            </div>
+            <Spinner animation="border" variant="primary" />
 
             <table className="table" style={{"width": 400,  "marginLeft": "auto", "marginRight": "auto", "marginTop": 20}}>
                 <thead>

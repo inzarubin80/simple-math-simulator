@@ -67,7 +67,7 @@ const GameOverScreen = ({numberExercises, mathematicalExpressions, onStart}) => 
                 </thead>
                 <tbody>
                 {mathematicalExpressions.map((expressions, key) => (
-                        <tr key={expressions.id} >
+                        <tr style={expressions.userAnswer===expressions.answer?{"background": "#00FF7F"}:{"background": "#FF7F50"}} key={expressions.id} >
                             <th scope="row">{expressions.id}</th>
                             <td>{expressions.number1 + " " + expressions.operator + " " + expressions.number2} </td>
                             <td>{expressions.userAnswer}</td>

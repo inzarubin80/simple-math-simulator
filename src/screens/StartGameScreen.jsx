@@ -5,6 +5,7 @@ import Operators from "../constants/operators";
 import InputRange from "../components/InputRange";
 import {connect} from 'react-redux';
 
+
 import {setOperator,
     setMaxNumber1,
     setMaxNumber2,
@@ -14,6 +15,7 @@ import {setOperator,
     showAlert,
     onGame} from '../redux/actions';
 import Alert from "../components/Alerts";
+import Spinner from "react-bootstrap/Spinner";
 
 const StartGameScreen = ({
                              minNumber1,
@@ -57,6 +59,10 @@ const StartGameScreen = ({
     return (
 
         <div>
+
+            <Spinner animation="border" role="status">
+                <span className="sr-only">Loading...</span>
+            </Spinner>
 
             <h3>Настраиваем упражнение</h3>
 
