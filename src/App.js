@@ -28,7 +28,6 @@ const App = ({start, game, finish, startGenerationMathematicalExpressions}) => {
     <div className="App">
         <Header/>
         {content}
-        <div>test</div>
         </div>);
 }
 
